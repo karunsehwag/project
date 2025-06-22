@@ -11,6 +11,13 @@ app.listen(PORT, () => {
 });
 
 app.use(cors());
+// Configure CORS
+app.use(cors({
+  origin: 'https://project-83fu.onrender.com',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+}));
 app.use(json());
 app.use(express.static(path.join(__dirname, "../public"))); // Serve index.html
 
