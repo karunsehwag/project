@@ -9,7 +9,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
 
-
+app.use(cors());
 app.use(json());
 app.use(express.static(path.join(__dirname, "../public"))); // Serve index.html
 
