@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import cors from "cors"; // ✅ This line is required
 import { json } from "body-parser";
 import { findOrCreateContact } from "./utils/helper";
 

@@ -68,7 +68,7 @@
     const phoneNumber = document.getElementById('phone').value.trim();
 
     try {
-      const res = await fetch('http://localhost:3000/identify', {
+      const res = await fetch('https://your-backend.onrender.com/identify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
