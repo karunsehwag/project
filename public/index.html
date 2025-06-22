@@ -68,17 +68,20 @@
     const phoneNumber = document.getElementById('phone').value.trim();
 
     try {
-      const res = await fetch('https://your-backend.onrender.com/identify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...(email && { email }),
-          ...(phoneNumber && { phoneNumber })
-        })
-      });
-
-      const data = await res.json();
-      output.textContent = JSON.stringify(data, null, 2);
+        fetch('https://your-backend-service.onrender.com/identify', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, phoneNumber })
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log(data);
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
     } catch (err) {
       output.textContent = 'Error: ' + err.message;
     }
