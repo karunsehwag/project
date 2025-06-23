@@ -1,25 +1,22 @@
 import express from "express";
 import path from "path";
-import cors from "cors"; // ✅ This line is required
+import cors from "cors";
 import { json } from "body-parser";
 import { findOrCreateContact } from "./utils/helper";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
 
-app.use(cors());
-// Configure CORS
+// ✅ Use CORS only once and configured properly
 app.use(cors({
-  origin: 'https://project-83fu.onrender.com',
+  origin: '*', // Allow all origins
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
-  credentials: true
 }));
+
+
 app.use(json());
-app.use(express.static(path.join(__dirname, "../public"))); // Serve index.html
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.post("/identify", async (req, res) => {
   try {
@@ -33,5 +30,5 @@ app.post("/identify", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
