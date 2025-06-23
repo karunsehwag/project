@@ -7,16 +7,16 @@ import { findOrCreateContact } from "./utils/helper";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ✅ Use CORS only once and configured properly
+// ✅ Allow requests from your frontend domain
 app.use(cors({
-  origin: '*', // Allow all origins
+  origin: ['https://project-83fu.onrender.com'], // Your frontend URL
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
 
-
 app.use(json());
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../public"))); // Serve index.html
 
 app.post("/identify", async (req, res) => {
   try {
