@@ -8,12 +8,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ Allow requests from your frontend domain
-app.use(cors({
-  origin: ['https://project-83fu.onrender.com'], // Your frontend URL
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-  credentials: true
-}));
+app.use(cors()); // allow all origins (no credentials)
+
 
 app.use(json());
 app.use(express.static(path.join(__dirname, "../public"))); // Serve index.html
